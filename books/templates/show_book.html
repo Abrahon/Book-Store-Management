@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-3xl text-center font-semibold my-3 text-green-500">List of the Book for Table</h1>
+
+
+<div class="relative overflow-x-auto  sm:rounded-lg">
+
+    {% if data%}
+    <table class="w-80% mx-auto text-lg text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    #id
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Book-Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Author
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Category
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    First-Publication
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last-Publication
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data%}
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+             
+                <td class="px-6 py-4">
+                    {{item.id}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.book_name}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.author}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.category}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.first_pub}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.last_pub}}
+                </td>
+                <td class="px-6 py-4">
+                    <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-none text-sm px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900"><a href="{% url 'edit_book' id=item.id %}">Edit</a></button>
+                    <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-none text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><a href="{% url 'delete_book' id=item.id %}">Delete</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+ 
+        </tbody>
+        {% else%}
+
+        <h1 class="text-red-700 text-center text-3xl ">No data available this table </h1>
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}
