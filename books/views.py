@@ -1,12 +1,28 @@
 from django.shortcuts import render,redirect
 from books.forms import bookStoreForm
 from books.forms import BookStoreModel
+from django.views.generic import TemplateView
 
 # Create your views here.
+# function base view
 
-def home(request):
-    return render(request,'store_book.html')
+# def home(request):
+#     return render(request,'store_book.html')
 
+# class base view
+class MyTemplateView(TemplateView):
+    template_name = 'home.html'
+    def get_context_data(self , **kwargs):
+        context = super().get_context_data()
+        context = {'name' : 'Sujon', 'age': 21}
+        print(context)
+        context.update(kwargs)
+        print(context)
+        return context
+    
+def home(request) :
+    return render(request,'home.html')      
+   
 def store_book(request):
     if request.method == 'POST':
         book =bookStoreForm(request.POST) 

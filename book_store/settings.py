@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'books',
+    'account',
     'crispy_forms',
     'crispy_tailwind',
     'django.contrib.admin',

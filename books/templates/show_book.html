@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-3xl text-center font-semibold my-3 text-green-500">List of the Book for Table</h1>
+<h1 class="text-3xl text-center font-semibold my-3 text-green-500">List of the Book</h1>
 
 
 <div class="relative overflow-x-auto  sm:rounded-lg">
@@ -54,9 +54,12 @@
                 <td class="px-6 py-4">
                     {{item.first_pub}}
                 </td>
+             
+                
                 <td class="px-6 py-4">
                     {{item.last_pub}}
                 </td>
+
                 <td class="px-6 py-4">
                     <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-none text-sm px-3 py-2 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900"><a href="{% url 'edit_book' id=item.id %}">Edit</a></button>
                     <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-none text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><a href="{% url 'delete_book' id=item.id %}">Delete</a></button>
